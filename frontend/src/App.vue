@@ -10,9 +10,9 @@
         <span v-if="store.volumeData" class="dim-info">{{ store.volumeData.dimensions.join('×') }}</span>
       </div>
     </header>
-    <div class="main-grid" v-if="store.volumeData">
+    <div class="main-grid">
       <div class="render-area"><VolumeRenderer /></div>
-      <div class="mpr-area">
+      <div class="mpr-area" v-if="store.volumeData">
         <div class="mpr-row">
           <div class="mpr-panel"><div class="mpr-title">横断面 (轴位)</div><MPRView plane="axial" /></div>
           <div class="mpr-panel"><div class="mpr-title">冠状面</div><MPRView plane="coronal" /></div>
@@ -21,9 +21,6 @@
         <WindowControl />
         <ROIPanel />
       </div>
-    </div>
-    <div class="loading-state" v-else-if="!store.loading">
-      <div class="placeholder">选择预设并点击"载入影像"开始分析</div>
     </div>
   </div>
 </template>
